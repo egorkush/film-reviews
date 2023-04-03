@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  backend:
+    image: registry.gitlab.com/codec356/film-reviews:0.1.0
+    environment:
+      POSTGRESQL_ADDRESS: "postgres:5432"
+      DB_PREFIX_ENV_NAME: postgres
+    ports:
+      - "8080:8080"
+  postgres:
+    image: postgres:14.5
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+      POSTGRES_PASSWORD: "film-reviews"
+      POSTGRES_USER: "film-reviews"
+      POSTGRES_DB: "film-reviews"
+    ports:
+      - "5432:5432"
